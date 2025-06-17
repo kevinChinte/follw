@@ -58,17 +58,20 @@
   <div class="container">
     <div class="left">
       <div class="card">
+       <h3>URL</h3>
+        <a id="url" href="#" target="_blank"></a>
+        <br><br>
+        <h3>GET MENSAJE</h3>
+        <a id="mensaje" href="#" target="_blank"></a>
+        <button onclick="copyMensaje()">Copiar Get Mensaje</button>
         <h3>Saludo</h3>
         <p id="saludo"></p>
         <button onclick="copyToClipboard('saludo')">Copiar Saludo</button>
-
+        <h3>LIKE</h3>
+        <button onclick="copyLike()">Copiar Get Like</button>
         <h3>Comentario</h3>
         <p id="comentario"></p>
         <button onclick="copyToClipboard('comentario')">Copiar Comentario</button>
-
-        <h3>URL</h3>
-        <a id="url" href="#" target="_blank"></a>
-
         <div class="navigation">
           <button id="prevBtn" onclick="prev()">Anterior</button>
           <button id="nextBtn" onclick="next()">Siguiente</button>
@@ -79,111 +82,110 @@
 
   <script>
     const data = [
-  {
-    "saludo": "Hola Mar. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Mar, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.",
-    "url": "https://www.instagram.com/mar.talanquer.coach/"
-  },
-  {
-    "saludo": "Hola Mariana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Mariana, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.",
-    "url": "https://www.instagram.com/nutricion.marianabennett/"
-  },
-  {
-    "saludo": "Hola ✨ Andrea. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola ✨, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.",
-    "url": "https://www.instagram.com/andreacasarinocoach/"
-  },
-  {
-    "saludo": "Hola Noelia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Buen día Noelia, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.",
-    "url": "https://www.instagram.com/coachnoeromero/"
-  },
-  {
-    "saludo": "Hola Erika. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Erika, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.",
-    "url": "https://www.instagram.com/erikadippvocalstudio/"
-  },
-  {
-    "saludo": "Hola Luis. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Luis, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.",
-    "url": "https://www.instagram.com/luis_r_cardenas/"
-  },
-  {
-    "saludo": "Hola Paola. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hey Paola, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!",
-    "url": "https://www.instagram.com/paolapazf/"
-  },
-  {
-    "saludo": "Hola Maria. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Maria, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.",
-    "url": "https://www.instagram.com/mariadelmardesanti/"
-  },
-  {
-    "saludo": "Hola Juli. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hey Juli, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.",
-    "url": "https://www.instagram.com/julippelaez/"
-  },
-  {
-    "saludo": "Hola Judit. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Qué tal Judit, estuve viendo tu perfil y me encantó. Te dejé un mensajito, ojalá conectemos.",
-    "url": "https://www.instagram.com/judit_trainer/"
-  },
-  {
-    "saludo": "Hola Aura. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Aura, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.",
-    "url": "https://www.instagram.com/auranaturaliacoach/"
-  },
-  {
-    "saludo": "Hola Guillermo. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Buen día Guillermo, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.",
-    "url": "https://www.instagram.com/coach.guillermomeza/"
-  },
-  {
-    "saludo": "Hola 🌙 Arcadia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola 🌙 Arcadia, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.",
-    "url": "https://www.instagram.com/somos.arcadia/"
-  },
-  {
-    "saludo": "Hola Susana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Estimado/a Susana, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.",
-    "url": "https://www.instagram.com/coachsusanapoletto/"
-  },
-  {
-    "saludo": "Hola Lisette. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Qué tal Lisette, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.",
-    "url": "https://www.instagram.com/serdinamico/"
-  },
-  {
-    "saludo": "Hola Jenny. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Jenny, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.",
-    "url": "https://www.instagram.com/jennyarteaga.coach/"
-  },
-  {
-    "saludo": "Hola Alba. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Encantado Alba, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.",
-    "url": "https://www.instagram.com/soyalbadelarosa/"
-  },
-  {
-    "saludo": "Hola Alicia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Alicia, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.",
-    "url": "https://www.instagram.com/estoydemilado/"
-  },
-  {
-    "saludo": "Hola María. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "María, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.",
-    "url": "https://www.instagram.com/la_biblioprofe/"
-  },
-  {
-    "saludo": "Hola Yam. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Yam, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.",
-    "url": "https://www.instagram.com/yamherrera_coach/"
-  },
-  {
-    "saludo": "Hola Training consciente. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺",
-    "comentario": "Hola Training consciente, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.",
-    "url": "https://www.instagram.com/training.consciente/"
-  }
+      {"saludo": "Hola Eduardo. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Eduardo, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.", "url": "https://www.instagram.com/coacheduardospandre/"}
+      ,{"saludo": "Hola David. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola David, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/davidsanchez.coach/"}
+      ,{"saludo": "Hola Kinesiologa. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Kinesiologa, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/sissygallardo.coach/"}
+      ,{"saludo": "Hola Dani. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Terapeuta/Coach, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.", "url": "https://www.instagram.com/lacoach.expansiva/"}
+      ,{"saludo": "Hola Consta. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Consta, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/larutacreativa.cl/"}
+      ,{"saludo": "Hola Costanza. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Costanza, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/_socialcee/"}
+      ,{"saludo": "Hola Daff. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Daff, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/daff.coach/"}
+      ,{"saludo": "Hola Marcela. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Marcela, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/erestumejoropcion/"}
+      ,{"saludo": "Hola Mara. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Mara, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/mara.rossi.coach/"}
+      ,{"saludo": "Hola Deborah. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Deborah, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/deborahdavidovicscoach/"}
+      ,{"saludo": "Hola Fernanda. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Fernanda, estuve viendo tu perfil y me encantó. Te dejé un mensajito, ojalá conectemos.", "url": "https://www.instagram.com/fernandamirallesyoga/"}
+      ,{"saludo": "Hola Mela. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Mela, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/mela.cantillo.coach/"}
+      ,{"saludo": "Hola Adri. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Adri, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.", "url": "https://www.instagram.com/adri.gonzalez.coach/"}
+      ,{"saludo": "Hola Nancy. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Estimado/a Nancy, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.", "url": "https://www.instagram.com/nancynievescoach/"}
+      ,{"saludo": "Hola Martha. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Martha, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.", "url": "https://www.instagram.com/marthaahow_coach/"}
+      ,{"saludo": "Hola Analia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Analia, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.", "url": "https://www.instagram.com/analia_counselor_coach_ontolog/"}
+      ,{"saludo": "Hola Coaching. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Encantado Coaching, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.", "url": "https://www.instagram.com/ingenieria.en.coaching/"}
+      ,{"saludo": "Hola Andrea. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Andrea, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.", "url": "https://www.instagram.com/poltiandrea_coach/"}
+      ,{"saludo": "Hola Ramiro. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Ramiro, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.", "url": "https://www.instagram.com/ramiro_fonseca_c/"}
+      ,{"saludo": "Hola Andrea. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Andrea, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/andrelucero_coach/"}
+      ,{"saludo": "Hola Rafael. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Rafael, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/rafael_calbet_coach/"}
+      ,{"saludo": "Hola Mirta. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Mirta, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.", "url": "https://www.instagram.com/mirtavazquez_coach/"}
+      ,{"saludo": "Hola Diego. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Diego, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/diegomatusoficial/"}
+      ,{"saludo": "Hola Coach. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Coach, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/elmensajero963/"}
+      ,{"saludo": "Hola Carina. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Carina, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/carinasar.coach/"}
+      ,{"saludo": "Hola Democrata. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Democrata, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/denisse_figueroa_coach/"}
+      ,{"saludo": "Hola Detlefsen. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Detlefsen, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.", "url": "https://www.instagram.com/daniel_coach_profesional/"}
+      ,{"saludo": "Hola Rosana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Rosana, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/rosanacisneros.coach/"}
+      ,{"saludo": "Hola Coach. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Coach, estuve viendo tu perfil y me encantó. Te dejé un mensajito, ojalá conectemos.", "url": "https://www.instagram.com/andrea.grassi.coach/"}
+      ,{"saludo": "Hola Lic.. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Lic., estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/lic.lucianarosolino/"}
+      ,{"saludo": "Hola Nico. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Nico, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.", "url": "https://www.instagram.com/nicofabiano.coach/"}
+      ,{"saludo": "Hola Juan. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Juan, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.", "url": "https://www.instagram.com/jot.coach/"}
+      ,{"saludo": "Hola Susana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Estimado/a Susana, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.", "url": "https://www.instagram.com/susanastanganelli/"}
+      ,{"saludo": "Hola Laura. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Laura, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.", "url": "https://www.instagram.com/soylaurachirino/"}
+      ,{"saludo": "Hola Virginia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Virginia, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.", "url": "https://www.instagram.com/virginialandi__/"}
+      ,{"saludo": "Hola Coaching. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Encantado Coaching, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.", "url": "https://www.instagram.com/escueladepnlycoaching/"}
+      ,{"saludo": "Hola Coach/AsesoramientoEmprendedor. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Coach/AsesoramientoEmprendedor, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.", "url": "https://www.instagram.com/silviafuertes.coach/"}
+      ,{"saludo": "Hola Adriana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Adriana, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/coachadrianavillarreal/"}
+      ,{"saludo": "Hola Haz. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Haz, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/coachsandramateus/"}
+      ,{"saludo": "Hola Ayari. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Ayari, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.", "url": "https://www.instagram.com/ayaridubraska/"}
+      ,{"saludo": "Hola Nico. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Nico, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/nicofernandezmiranda/"}
+      ,{"saludo": "Hola Mary. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Mary, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/marianacazon_coach/"}
+      ,{"saludo": "Hola Oriana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Oriana, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/orito.ru/"}
+      ,{"saludo": "Hola Karina. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Karina, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/karibaldicoach/"}
+      ,{"saludo": "Hola 🌈. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola 🌈, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.", "url": "https://www.instagram.com/danicoachok/"}
+      ,{"saludo": "Hola Coaching. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Coaching, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/creandopuentes.coaching/"}
+      ,{"saludo": "Hola LORENA. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola LORENA, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/lorenalerdamentorcoach/"}
+      ,{"saludo": "Hola Kutsche. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Kutsche, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.", "url": "https://www.instagram.com/kutsche.coaching/"}
+      ,{"saludo": "Hola Susana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Susana, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.", "url": "https://www.instagram.com/susana_coach/"}
+      ,{"saludo": "Hola Martìn. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Estimado/a Coaching, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.", "url": "https://www.instagram.com/martin.monte.riso/"}
+      ,{"saludo": "Hola Carlos. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Carlos, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.", "url": "https://www.instagram.com/carlosporta_coach/"}
+      ,{"saludo": "Hola Susana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Susana, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.", "url": "https://www.instagram.com/koppsusana/"}
+      ,{"saludo": "Hola Ricky. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Encantado Ricky, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.", "url": "https://www.instagram.com/rye.coachesdepareja/"}
+      ,{"saludo": "Hola Ana. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Ana, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.", "url": "https://www.instagram.com/ana_coachdevida/"}
+      ,{"saludo": "Hola Cromática. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Cromática, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.", "url": "https://www.instagram.com/cromaticacoaching/"}
+      ,{"saludo": "Hola Escuela. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Escuela, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/escueladecoaching/"}
+      ,{"saludo": "Hola Liderarte. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Liderarte, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/liderarteperformancecoaching/"}
+      ,{"saludo": "Hola Laura. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Laura, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.", "url": "https://www.instagram.com/lauraaros.coach/"}
+      ,{"saludo": "Hola Vale. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Vale, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/yosoyvalecosta/"}
+      ,{"saludo": "Hola Gloria. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Coaching, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/gloriatrotti/"}
+      ,{"saludo": "Hola Diego. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Diego, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/diegohernandez_coach/"}
+      ,{"saludo": "Hola Metalma. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Metalma, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/metalma_coach_ontologica/"}
+      ,{"saludo": "Hola gonzalo. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola gonzalo, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.", "url": "https://www.instagram.com/gonza.coach.on/"}
+      ,{"saludo": "Hola Mel. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Mel, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/melisa_coaching_pnl/"}
+      ,{"saludo": "Hola EmpatiK. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal EmpatiK, estuve viendo tu perfil y me encantó. Te dejé un mensajito, ojalá conectemos.", "url": "https://www.instagram.com/empatikcoach/"}
+      ,{"saludo": "Hola Afilando. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Afilando, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/afilando.coaching/"}
+      ,{"saludo": "Hola Daniel. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Coaching, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.", "url": "https://www.instagram.com/coachdanielpachecorueda/"}
+      ,{"saludo": "Hola Carina. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Carina, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.", "url": "https://www.instagram.com/carina_valdebenito_coach/"}
+      ,{"saludo": "Hola Yuraima. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Estimado/a Yuraima, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.", "url": "https://www.instagram.com/suarez_yuraima_/"}
+      ,{"saludo": "Hola NLP. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal NLP, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.", "url": "https://www.instagram.com/nlpevolutioncoachingschool/"}
+      ,{"saludo": "Hola Flavia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Flavia, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.", "url": "https://www.instagram.com/flaviabustos.coach/"}
+      ,{"saludo": "Hola Coach. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Encantado Coach, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.", "url": "https://www.instagram.com/coachexitoso/"}
+      ,{"saludo": "Hola Eugenia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Eugenia, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.", "url": "https://www.instagram.com/eugeniabuyo.coach/"}
+      ,{"saludo": "Hola Diego. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Diego, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.", "url": "https://www.instagram.com/diego.lerner.coach/"}
+      ,{"saludo": "Hola M.C.M.. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola M.C.M., estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/m.c.m.coaching/"}
+      ,{"saludo": "Hola Coaching. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Coaching, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/valeriazanzicoach/"}
+      ,{"saludo": "Hola Carlos. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Coach, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/carlossarmiento.coach/"}
+      ,{"saludo": "Hola Rosa. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Rosa, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/rosagutierrez.coach/"}
+      ,{"saludo": "Hola Edgardo. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Edgardo, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/edgardosian.coaching/"}
+      ,{"saludo": "Hola Graciela. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Graciela, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/gracielamorinicoach/"}
+      ,{"saludo": "Hola Gla. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Gla, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.", "url": "https://www.instagram.com/gla_noguera_coach_ontologico/"}
+      ,{"saludo": "Hola SOCIAL. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey SOCIAL, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/socialydeportivocoach/"}
+      ,{"saludo": "Hola Romina. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Romina, estuve viendo tu perfil y me encantó. Te dejé un mensajito, ojalá conectemos.", "url": "https://www.instagram.com/icicoachinglatam/"}
+      ,{"saludo": "Hola Sabri. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Sabri, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/sabri_poly/"}
+      ,{"saludo": "Hola Maria. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día maria, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.", "url": "https://www.instagram.com/coach.marialegal/"}
+      ,{"saludo": "Hola Estefanía. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Estefanía, vi tu contenido y me pareció muy valioso. Te envié un mensaje privado, será un gusto presentarme.", "url": "https://www.instagram.com/estefanialopezcoach/"}
+      ,{"saludo": "Hola Stefanía. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Estimado/a Stefanía, me llamó la atención tu perfil por lo que compartes. Te dejé un mensaje por interno, encantado de saludarte.", "url": "https://www.instagram.com/omstefaniacoach/"}
+      ,{"saludo": "Hola Alexis. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Qué tal Alexis, me pareció muy inspirador lo que estás haciendo. Te escribí por mensaje directo, feliz de conocerte.", "url": "https://www.instagram.com/alexismelocoach/"}
+      ,{"saludo": "Hola Cristina. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Cristina, tu perfil refleja un gran trabajo. Te envié un mensaje privado, me encantaría conectar contigo.", "url": "https://www.instagram.com/coachcristinarivero/"}
+      ,{"saludo": "Hola Sergio. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Encantado Sergio, vi tu perfil y me pareció muy profesional tu enfoque. Te dejé un mensaje por privado para conversar.", "url": "https://www.instagram.com/coach_motoviajero/"}
+      ,{"saludo": "Hola IVO. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola IVO, me gustó mucho el propósito detrás de lo que haces. Te envié un mensaje directo, quedo atento.", "url": "https://www.instagram.com/ivo.coach/"}
+      ,{"saludo": "Hola Unidos x el Coaching.  Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Unidos, un gusto saludarte. Me encontré con tu contenido y me pareció muy potente. Te escribí por privado.", "url": "https://www.instagram.com/unidosporelcoaching/"}
+      ,{"saludo": "Hola Liderazgo. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Liderazgo, estuve viendo tu trabajo y realmente destaca. Te dejé un mensajito privado, feliz de conocerte más.", "url": "https://www.instagram.com/argen.coach/"}
+      ,{"saludo": "Hola Educa. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Educa, me pareció excelente lo que compartes. Te escribí por mensaje directo para saludarte y presentarme.", "url": "https://www.instagram.com/educaargentinacoaching/"}
+      ,{"saludo": "Hola Natalia. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Natalia, me topé con tu perfil y quise escribirte. Te dejé un mensaje privado, será un placer conversar.", "url": "https://www.instagram.com/natytoric.coach/"}
+      ,{"saludo": "Hola Flor. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Flor, me pareció muy interesante tu propuesta. Te mandé un mensaje directo, espero podamos hablar.", "url": "https://www.instagram.com/ser_profesional/"}
+      ,{"saludo": "Hola COACHING. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "COACHING, un gusto. Vi tu perfil y me llamó mucho la atención lo que compartes. Te escribí por privado, feliz de conectar.", "url": "https://www.instagram.com/coachingcomunicacional_/"}
+      ,{"saludo": "Hola Damián. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Damián, vi lo que haces y me pareció genial. Te dejé un mensaje, me encantaría conectar.", "url": "https://www.instagram.com/damiansecchi.coach/"}
+      ,{"saludo": "Hola Raquel. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Raquel, me gustó mucho tu trabajo. Te escribí por privado, ¡hablemos!", "url": "https://www.instagram.com/raquelnoemi.coach/"}
+      ,{"saludo": "Hola Martin. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Martin, me llamó la atención tu perfil. Te dejé un mensaje, con gusto me presento.", "url": "https://www.instagram.com/martindavalos.coach/"}
+      ,{"saludo": "Hola Agustín. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hey Agustín, tu contenido me pareció muy bueno. Te escribí por mensaje, feliz de conversar.", "url": "https://www.instagram.com/soyagustinduarte/"}
+      ,{"saludo": "Hola Martín. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Hola Martín, estuve revisando tu perfil y me pareció muy interesante lo que haces. Te dejé un mensaje por privado, encantado de conectar.", "url": "https://www.instagram.com/martinestieucoach/"}
+      ,{"saludo": "Hola Fernanda. Estaba viendo tu perfil y lo que haces y tengo algunas dudas... Te puedo hacer unas preguntas? 🥺", "comentario": "Buen día Fernanda, admiro mucho el enfoque de tu trabajo. Te escribí por interno, espero podamos conversar.", "url": "https://www.instagram.com/soyfernanda_digital/"}
+
 ];
 
     let index = 0;
@@ -217,6 +219,18 @@
     function copyToClipboard(field) {
       const text = document.getElementById(field).textContent;
       navigator.clipboard.writeText(text).then(() => {
+        // alert(`Texto copiado: ${text}`);
+      });
+    }
+
+    function copyMensaje() {
+      navigator.clipboard.writeText("document.querySelector('.x1i10hfl.xjqpnuy.xc5r6h4.xqeqjp1.x1phubyo.x972fbf.x10w94by.x1qhh985.x14e42zd.xdl72j9.x2lah0s.xe8uvvx.xdj266r.x14z9mp.xat24cr.x1lziwak.x2lwn1j.xeuugli.xexx8yu.x18d9i69.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x1q0g3np.x1lku1pv.x1a2a7pz.x6s0dn4.xjyslct.x1obq294.x5a5i1n.xde0f50.x15x8krk.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x9f619.x1ypdohk.x78zum5.x1f6kntn.xwhw2v2.x10w6t97.xl56j7k.x17ydfre.xf7dkkf.xv54qhq.x1n2onr6.x2b8uid.xlyipyv.x87ps6o.x14atkfc.x5c86q.x18br7mf.x1i0vuye.x1gjpkn9.x1h6iz8e.xixcex4.xk4oym4.xl3ioum').click()").then(() => {
+        // alert(`Texto copiado: ${text}`);
+      });
+    }
+
+    function copyLike() {
+      navigator.clipboard.writeText("document.querySelector('.x1ypdohk .x1i10hfl.x972fbf.x10w94by.x1qhh985.x14e42zd.x9f619.xe8uvvx.xdj266r.x14z9mp.xat24cr.x1lziwak.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x6s0dn4.xjbqb8w.x1ejq31n.x18oe1m7.x1sy0etr.xstzfhl.x1ypdohk.x78zum5.xl56j7k.x1y1aw1k.xf159sx.xwib8y2.xmzvs34.xcdnw81').click()").then(() => {
         // alert(`Texto copiado: ${text}`);
       });
     }
